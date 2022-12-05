@@ -6,6 +6,7 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
+3.1.3p185 (2022-11-24 revision 1a6b16756e)
 
 * System dependencies
 
