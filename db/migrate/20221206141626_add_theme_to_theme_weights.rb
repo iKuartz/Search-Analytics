@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddThemeToThemeWeights < ActiveRecord::Migration[7.0]
   def change
     add_reference :theme_weights, :theme
