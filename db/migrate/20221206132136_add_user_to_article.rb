@@ -1,5 +1,5 @@
 class AddUserToArticle < ActiveRecord::Migration[7.0]
   def change
-    add_reference :article, :user
+    add_reference :articles, :user
   end
 end
