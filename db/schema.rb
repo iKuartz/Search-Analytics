@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_06_012228) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_06_141626) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,6 +18,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_012228) do
     t.integer "weight"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "article_id"
+    t.index ["article_id"], name: "index_article_weights_on_article_id"
+    t.index ["user_id"], name: "index_article_weights_on_user_id"
   end
 
   create_table "articles", force: :cascade do |t|
@@ -25,12 +29,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_012228) do
     t.integer "relevance"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
   create_table "theme_weights", force: :cascade do |t|
     t.integer "weight"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "theme_id"
+    t.index ["theme_id"], name: "index_theme_weights_on_theme_id"
+    t.index ["user_id"], name: "index_theme_weights_on_user_id"
   end
 
   create_table "themes", force: :cascade do |t|
@@ -38,6 +48,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_012228) do
     t.integer "relevance"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "article_id"
+    t.index ["article_id"], name: "index_themes_on_article_id"
   end
 
   create_table "users", force: :cascade do |t|
