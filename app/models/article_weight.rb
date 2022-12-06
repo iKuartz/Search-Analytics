@@ -1,0 +1,2 @@
+class ArticleWeight < ApplicationRecord
+end
