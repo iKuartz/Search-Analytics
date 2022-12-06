@@ -1,0 +1,2 @@
+class ThemeWeight < ApplicationRecord
+end
