@@ -5,7 +5,7 @@
 ![ERD diagram of our database](\db\drawing\ERD_diagram.png)
 
 ## Basic functionality:
-This search engine is designed to look for words as they are input by the user, delivering results tailored to each user's specific history (if they have one). The general rule that defines the order of the results is simple: first, the 20 (could be more) more similar to the query get ordered by **(relevance to the user + general relevance / users who contributed with at least one relevance point).**. Then the next 20, and so on.
+This search engine is designed to look for words as they are input by the user, delivering results tailored to each user's specific history (if they have one). The general rule that defines the order of the results is simple: first, the 20 (could be more) results **more similar to the query** get ordered by **(relevance to the user + general relevance / users who contributed with at least one relevance point).**. Then the next 20, and so on.
 
 ## How relevance is determined:
 An article or theme gets one **general relevance** point each time a user accesses it, and stays on it for at least 20 seconds. **Relevance to the user** is a count of points only for that user, and the general relevance gets increased by every user.
