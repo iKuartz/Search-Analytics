@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_06_141626) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_06_144329) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,6 +30,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_141626) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.bigint "theme_id"
+    t.index ["theme_id"], name: "index_articles_on_theme_id"
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
@@ -48,8 +50,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_141626) do
     t.integer "relevance"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "article_id"
-    t.index ["article_id"], name: "index_themes_on_article_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -60,4 +60,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_141626) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "article_weights", "articles"
+  add_foreign_key "article_weights", "users"
+  add_foreign_key "articles", "themes"
+  add_foreign_key "articles", "users"
+  add_foreign_key "theme_weights", "themes"
+  add_foreign_key "theme_weights", "users"
 end
